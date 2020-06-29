@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .board-update
+        if user.id
+            .input-group
+                span 제목 :
+                    .board-detail-name(name='boardnameUpdate')=detail.boardName
+                    input.my-id(type="hidden" value=user.id)
+                .board-detail-text(name='boardtextUpdate' )= detail.boardText
+                input#test22(type="hidden" value=detail.boardText)
+                button.postdetail_but(type='button')
+                    a(href="/board" ) 완료
+    script.

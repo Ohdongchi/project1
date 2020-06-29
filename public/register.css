@@ -1,0 +1,158 @@
+*{
+	margin:0;
+	padding:0;
+}
+.register-division{
+	width:100%;
+	text-align:center;
+	font-family:굴림;
+	height:100%;
+}
+#register-title{
+	display:inline-block;
+	font-size:4em;
+	font-family: 'Great Vibes', cursive;
+}
+@media (max-width:700px){
+	#register-title{
+		display:inline-block;
+		font-size:2em;
+		font-family: 'Great Vibes', cursive;
+	}
+}
+@media (max-width:480px){
+	#register-title{
+		display:inline-block;
+		font-size:1em;
+		font-family: 'Great Vibes', cursive;
+	}
+}
+h6{
+	color:rgba(0,0,0,0.45);
+	display:inline-block;
+	vertical-align:middle;
+}
+
+.cover{
+	width:100%;
+	text-align:center;
+}
+
+.width-size{
+	width:30em;
+	display:inline-block;
+}
+
+@media (max-width:700px){
+	.width-size{
+		width:20em;
+		display:inline-block;
+	}	
+}
+@media (max-width:540px){
+	.width-size{
+		width:15em;
+		display:inline-block;
+	}	
+}
+section{
+	width:100%;
+	margin-top:1em;
+}
+section > label {
+	width:100%;
+	display:block;
+	text-align:left;
+	margin-bottom:0.5em;
+}
+section > .text-box {
+	text-align:left;
+	position:relative;
+	border:1px solid black;
+	height:50px;
+	line-height:50px;
+	padding-right:6em;
+	padding-left:1em;
+}
+.text-box > input { 
+	width:100%;
+	margin:1em 0 ;
+	height:1.5em;
+	display:block;
+	border:none;
+	position:relative;
+	float:left;
+}
+@media(max-width:700px){ /**/
+	section > .text-box {
+		text-align:left;
+		position:relative;
+		border:1px solid black;
+		height:50px;
+		line-height:50px;
+		padding-right:6em;
+		padding-left:1em;
+	}
+	.text-box > input { 
+		width:100%;
+		margin:10px 0 ;
+		height:30px;
+		line-height:30px;
+		display:block;
+		border:none;
+		position:relative;
+		float:left;
+	}
+}
+@media(max-width:540px){
+	section > .text-box {
+		text-align:left;
+		position:relative;
+		border:1px solid black;
+		height:40px;
+		padding-right:6em;
+		padding-left:1em;
+	}
+	.text-box > input { 
+		width:100%;
+		margin-top:2px;
+		margin:0;
+		height:20px;
+		line-height:40px;
+		display:block;
+		border:none;
+		position:relative;
+		float:left;
+	}
+}
+.text-box > span {
+	padding-left:2px;
+	position:absolute;
+	text-align: center;
+}
+.date {
+	width:100%;
+	display: flex;
+	justify-content: space-between;
+}
+.dateDiv {
+	border:1px solid black;
+	padding:0.5em;
+}
+.dateDiv > input {
+	width:100%;
+	height:30px;
+	border:none;
+}
+.sex-box {
+	display: flex;
+}
+.sex-box > div {
+	padding: 2px 0.5em;
+}
+.register_button {
+	width:100%;
+	height:40px;
+	border:none;
+	background-color:rgb(130, 225, 0);
+}

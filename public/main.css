@@ -1,0 +1,115 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: auto;
+    display: block;
+    background-color: rgba(224, 224, 224, 0.984);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+img {
+    width: 25px;
+    height: 25px;
+}
+
+.logo {
+    position: absolute;
+    width: 100%;
+    z-index: 99;
+    background-color: rgba(78, 51, 230, 0.788);
+    display: flex;
+    height: 50px;
+}
+
+.logo>span {
+    width: 60px;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 10px;
+    font-family: 'Oleo Script', cursive;
+    color: white;
+    overflow: hidden;
+}
+
+.logo>span:first-child {
+    width: 200px;
+    font-size: 1rem;
+}
+
+.logo>span:nth-child(2) {
+    float: left;
+}
+
+@media (max-width:600px) {
+    .logo>span:first-child {
+        width: 38%;
+        font-size: 1.0rem;
+    }
+}
+
+.logo>.menu {
+    width: 100%;
+    text-align: right;
+}
+
+.logo>.menu>ul {
+    height: 50px;
+    line-height: 50px;
+    padding-right: 10px;
+}
+
+.logo>.menu>ul>li {
+    text-align: center;
+    display: inline-block;
+    border-right: 1px solid rgba(150, 148, 148, 0.95);
+    line-height: 10px;
+    padding-right: 5px;
+    width: 100px;
+}
+
+.logo>.menu>ul>li:last-child {
+    border-right: none;
+}
+
+.logo>.menu>ul>li>a:hover {
+    color: rgba(150, 221, 182, 0.904);
+}
+
+@media (max-width:600px) {
+    .logo>span {
+        width: 50%;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 10px;
+        font-family: 'Oleo Script', cursive;
+        color: white;
+        font-size: 1.5em;
+        overflow: hidden;
+    }
+    .logo>.menu {
+        width: 100%;
+        text-align: right;
+    }
+    .logo>.menu>ul>li {
+        text-align: center;
+        display: inline-block;
+        border-right: 1px solid rgb(150, 148, 148, 0.95);
+        line-height: 10px;
+        padding-right: 5px;
+        font-size: 12px;
+        width: 50px;
+    }
+}

@@ -1,0 +1,43 @@
+.main_content {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 50px;
+    bottom: 0px;
+    overflow-y: auto;
+}
+
+.main_content2 {
+    margin-left: 250px;
+}
+
+.main_content>section>h1 {
+    text-align: center;
+}
+
+.main_content>section>ul>li {
+    display: inline-block;
+}
+
+.main_content>section>ul>li:first-child {
+    width: 7em;
+}
+
+.main_content>section>ul>li:nth-child(even) {
+    width: 20em;
+}
+
+.main_content>section>ul>li:last-child {
+    width: 10em;
+}
+
+.board1_update,
+.board2_update,
+.board3_update,
+.board4_update {
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}

@@ -1,0 +1,51 @@
+.padd {
+    padding:50px 0;
+}
+
+
+.stack-information {
+    width:100%;
+    margin:0;
+    padding:0;
+    margin-top:50px;
+    text-align: center;
+}
+.stack-information2{
+    width:80%;
+    display: inline-block;
+    text-align: left;
+}
+#stack-section1 > h1 {
+    padding: 10px 0;
+}
+#stack-section1 > .infoimg{padding:20px 0;}
+#stack-section1 > .infoimg > img {
+    display: inline-block;
+    width:250px;
+    height:200px;
+    border :1px solid black;
+    border-radius:10px;
+    margin-right:10px;
+}
+
+
+#stack-section1 > img{
+    width:20em;
+    height:150px;
+    padding:5px 0;
+}
+#stack-section2 > img{
+    width:20em;
+    height:150px;
+    padding:5px 0;
+}
+#stack-section3 > img{
+    width:15em;
+    height:150px;
+    padding:5px 0;
+}
+#stack-section4 > img{
+    width:20em;
+    height:150px;
+    padding:5px 0;
+}

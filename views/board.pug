@@ -1,0 +1,77 @@
+extends layout
+block content
+
+    a(href="/board/write")
+        button#write(type="button") 글 작성하기
+    form#board(method="POST" action="/board")
+        .board_group
+            table
+                thead
+                    tr.asd
+                        th 작성자
+                        th 제목
+                        th 내용
+                        th 삭제
+                        th 수정
+                        th 자세히보기
+                tbody
+                    for poster in twits
+                        tr.Poster
+                            td.boardNick=poster.User.nick
+                            td.boardName=poster.boardName
+                            -function textOverCut(text){
+                            -   if(text.length > 10 ){
+                            -       text = text.substr(0, 9) + '  ... ';
+                            -   }
+                            -return text;
+                            -}
+                            td.boardContent=textOverCut (poster.boardText)
+                            
+                            td
+                                if user.id == poster.User.id
+                                    input.poster_id(type="hidden" value=poster.id)
+                                    input.poster_user_id(type="hidden" value=poster.User.id)
+                                    input.my-id(type="hidden" value=user.id)
+                                    button(type="button").post_delete 삭제
+                            td
+                                if user.id == poster.User.id
+                                    input.poster_id(type="hidden" value=poster.id)
+                                    input.poster_user_id(type="hidden" value=poster.User.id)
+                                    input.my-id(type="hidden" value=user.id)
+                                    button(type="button")
+                                        a(href="/board/update/" + poster.id).post_update 수정
+                            if user.id
+                                td
+                                    input.poster_id(type="hidden" value=poster.id)
+                                    input.poster_user_id(type="hidden" value=poster.User.id)
+                                    input.my-id(type="hidden" value=user.id)
+                                    button(type="button")
+                                        a(href="/board/detail/" + poster.id).post_detail 자세히보기
+
+
+    script(type="text/javascript").
+        document.querySelectorAll('.post_delete').forEach(function (tag) {
+            tag.addEventListener('click', function () {
+                var isLoggedIn = document.querySelector('.my-id');
+                if (isLoggedIn) {
+                    //- alert(tag.parentNode.querySelector('.poster_id').value);
+                    var PosterId = tag.parentNode.querySelector('.poster_id').value;
+                    var userId = tag.parentNode.querySelector('.poster_user_id').value;
+                    var myId = isLoggedIn.value;
+                    if (userId === myId) {
+                        if (confirm('게시글을 삭제 하시겠습니까?')) {
+                        var xhr = new XMLHttpRequest();
+                        xhr.onload = function () {
+                            if (xhr.status === 200) {
+                                location.reload();
+                            } else {
+                               console.error(xhr.responseText);
+                            }
+                        };
+                            xhr.open('POST', '/board/delete/' + PosterId);
+                            xhr.send();
+                        }
+                    }
+                }
+            });
+        });

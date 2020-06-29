@@ -1,0 +1,85 @@
+extends layout
+    
+block content
+    form#board_write_form(action="/board/write" method="post" enctype="multipart/form-data")
+        table
+            tr
+                td 제목:
+                    input#board-write-title(type="text" name="Name")
+                td 
+                    label#img-label(for='img') 업로드
+                    input#img(type='file' accept='image/*' multiple='multiple')
+                    input#img-url(type='hidden' name='url').
+            tr
+                td
+                    textarea#board-write-text(name="Text", class="editor1", cols="30", rows="20" placeholder="내용")
+            tr
+                td
+                    button(type="submit") 작성하기 !
+            tr
+                td
+                    #img-preview
+    script(type="text/javascript").
+        if (document.getElementById('img')) {
+            document.getElementById('img').addEventListener('change', function (e) {
+                var formData = new FormData();
+                //- console.log(this, this.files);
+                //- alert(this.files.length); //파일 개수
+                var Concat;
+
+                
+
+                for(i=0;i < this.files.length;i++){
+                    formData.append('photo', this.files[i]);
+                    //- concat=this.files[0].concat('',this.files[i]);
+                }
+                //- alert(concat);
+                
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        
+                        let parsing_url = JSON.parse(xhr.responseText);
+                       
+                        for (var i=0;i<parsing_url.length;i++){
+                            
+                            let image_path = parsing_url[i];
+
+                            let addImg = document.createElement('img');
+                            addImg.src = image_path;
+
+                            let addInputBox = document.createElement('input');
+                            addInputBox.setAttribute('class','imgURL');
+                            addInputBox.value = image_path;
+                            addInputBox.name ='url';
+                            addInputBox.type = 'hidden';
+                            
+                            document.getElementById('img-preview').appendChild(addImg);
+                            document.getElementById('img-preview').appendChild(addInputBox);
+                            //이미지 url 스트링 배열을 다시 서버로 보내서 포문돌려서 저장하기 ! 
+                        }
+                    } else {
+                        console.error(xhr.responseText);
+                    }
+                };
+                xhr.open('POST', '/board/img');
+                xhr.send(formData);
+            });
+        }
+        document.querySelector('#board_write_form').addEventListener('submit',function (e){
+            var title = document.querySelector('#board-write-title');
+            var bodyText = document.querySelector('#board-write-text');
+
+            if(title.value == ''){
+                e.preventDefault();
+                alert('제목을 입력해주세요 공백은 안됩니다.');
+                title.focus();
+                return false;
+            }else if(bodyText.value == ''){
+                e.preventDefault();
+                alert('본문을 입력해주세요 공백은 안됩니다.');
+                bodyText.focus();
+                return false;
+            }
+            
+        });

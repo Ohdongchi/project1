@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    form#board-update-form(method='post' action='/board/update/' + id)
+        .board-update
+            if user.id
+                .input-group
+                    span 제목 : 
+                        input.board-update-name(name='boardnameUpdate' value= updater.boardName)
+                        input.my-id(type="hidden" value=user.id)
+                    textarea.board-update-text(name='boardtextUpdate' mexlenth=200)= updater.boardText
+                    button.postUpdate_submit(type='submit') 완료
+    script(type="text/javascript").
+        document.querySelector('#board-update-form').addEventListener('submit',function (e){
+            var title = document.querySelector('.board-update-name');
+            var bodyText = document.querySelector('.board-update-text');
+
+            if(title.value == ''){
+                e.preventDefault();
+                alert('제목을 입력해주세요 공백은 안됩니다.');
+                title.focus();
+                return false;
+            }else if(bodyText.value == ''){
+                e.preventDefault();
+                alert('본문을 입력해주세요 공백은 안됩니다.');
+                bodyText.focus();
+                return false;
+            }
+        });

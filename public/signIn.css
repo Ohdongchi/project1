@@ -1,0 +1,59 @@
+.login-box {
+    width:100%;
+    height:auto;
+    padding:0;
+    margin:0;
+    margin:0;
+    margin-top:0.5em;
+    margin-bottom:0.5em;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    text-align: center;
+    display: block;
+}
+
+.login-form {
+    width:400px;
+    height:auto;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    display: inline-block;
+    background-color:rgba(198, 219, 120, 0.75);
+}
+
+.input-box {
+    height:50px;
+    line-height:50px;
+}
+
+.login-box label {
+    display: inline-block;
+    width:100px;
+}
+
+.submit-box {
+    padding:0.3em;
+}
+.submit-box > button {
+    font-size:1em;
+    padding:5px;
+}
+/* 
+.facebook_btn {border:1px solid black; display: inline-block; margin-top:5px;}
+.facebook_btn > span {
+    color:white;
+    background-color:#4267b2;
+    font-size:2em;
+    font-family: 'Archivo Black', sans-serif;
+}
+.facebook_btn > span:first-child {
+    border-right:1px solid black;
+    padding: 0 0.5em;
+}
+.facebook_btn > span:nth-child(even) {
+    padding: 0 0.5em;
+} */

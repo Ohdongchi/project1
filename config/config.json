@@ -1,0 +1,23 @@
+{
+    "development": {
+      "username": "root",
+      "password": "ehdgud#dk1",
+      "database": "web_minor",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "test": {
+      "username": "root",
+      "password": "ehdgud#dk1",
+      "database": "web_minor",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    },
+    "production": {
+      "username": "root",
+      "password": "ehdgud#dk1",
+      "database": "web_minor",
+      "host": "127.0.0.1",
+      "dialect": "mysql"
+    }
+  }

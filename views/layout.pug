@@ -1,0 +1,84 @@
+doctype html
+head
+  title 
+  meta(name="info" content="웹프입 야간반 컴퓨터공학과 오동형입니다.")
+  meta(charset='utf-8')
+  meta(name='dev' content='Oh dong hyeong')
+  meta(name="viewport" content="width=device-width, user-scalable=no")
+
+  link(rel='stylesheet' type='text/css' href='/main.css')
+  link(rel='stylesheet' type='text/css' href='/signIn.css')
+  link(rel='stylesheet' type='text/css' href='/nav.css' )
+  link(rel='stylesheet' type='text/css' href='/content.css')
+  link(rel='stylesheet' type='text/css' href='/register.css')
+  link(rel='stylesheet' type='text/css' href='/mainContent.css')
+  link(rel='stylesheet' type='text/css' href='/board.css')
+  link(rel='stylesheet' type='text/css' href='/DevNenu.css')
+  link(rel='stylesheet' type='text/css' href='/stack.css')
+  link(rel='stylesheet' type='text/css' href='/menuButton.css')
+
+  link(href='https://fonts.googleapis.com/css?family=Oleo+Script&display=swap' rel='stylesheet')
+  link(href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css?family=Acme|Courgette|Zilla+Slab&display=swap" rel="stylesheet")
+  link(href="https://fonts.googleapis.com/css?family=Sunflower:300&display=swap" rel="stylesheet")
+
+  script(src="https://code.jquery.com/jquery-3.4.1.min.js")
+  script(src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js")
+
+header#header_menu
+  .logo
+    span Dong Chi Blog
+    span 
+      .menuContainer(onclick="menuButtonClick(this)")
+        .bar1
+        .bar2
+        .bar3
+    .menu
+      ul
+        if user && user.id
+          li
+            a(href='/') HOME
+          li
+            a#logout_but(href="") logout
+            input.my-id(type="hidden" value=user.id)
+        else
+          li
+            a(href='/') HOME
+          li
+            a(href='/auth/register') Register
+          li
+            a(href='/auth/login') Login
+div
+  .navigation
+    nav
+      ul.board
+        li
+          a(href='/board') 자유게시판
+  .main_content
+    .main_content2
+      block content
+  script(type="text/javascript").
+    document.querySelectorAll('#logout_but').forEach(function (tag) {
+      tag.addEventListener('click', function () {
+          var isLoggedIn = document.querySelector('.my-id');
+          if (isLoggedIn) {
+            if (confirm('로그아웃을 하시겠습니까?')) {
+                var xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        location.reload();
+                    } else {
+                        console.error(xhr.responseText);
+                    }
+                };
+                xhr.open('POST', '/auth/logout/');
+                xhr.send();
+            }
+          }
+      });
+    });
+
+    document.oncontextmenu=function(e){
+      alert('오른쪽 클릭 금지');
+      return false;
+    }
