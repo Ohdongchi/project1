@@ -15,18 +15,17 @@ block content
                         th 수정
                         th 자세히보기
                 tbody
-                    for poster in twits
+                    for poster in posters
                         tr.Poster
                             td.boardNick=poster.User.nick
                             td.boardName=poster.boardName
                             -function textOverCut(text){
-                            -   if(text.length > 10 ){
-                            -       text = text.substr(0, 9) + '  ... ';
-                            -   }
-                            -return text;
+                            -    if(text.length > 10 ){
+                            -        text = text.substr(0, 9) + '  ... ';
+                            -    }
+                            -    return text;
                             -}
-                            td.boardContent=textOverCut (poster.boardText)
-                            
+                            td.boardContent=textOverCut(poster.boardText)
                             td
                                 if user.id == poster.User.id
                                     input.poster_id(type="hidden" value=poster.id)
@@ -75,3 +74,14 @@ block content
                 }
             });
         });
+    script.
+        var poster = !{JSON.stringify(posters)};
+        var td = document.querySelectorAll('.boardName');
+        for (i=0;i<poster.length;i++){
+            if (td[i].nextSibling.getAttribute('class') == 'boardContent' && td[i].innerText == poster[i].boardName ){
+                    td[i].nextSibling.innerHTML=poster[i].boardText.replace(/(<([^>]+)>)/ig,"");
+            }
+        }
+
+        
+        

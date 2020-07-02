@@ -21,9 +21,10 @@ router.get('/', isLoggedIn, async(req, res, next) => {
             ],
         })
         .then((posts) => {
+            console.log(posts[0]);
             res.render('board', {
                 title: 'Web Programing Minorroject',
-                twits: posts,
+                posters: posts,
                 user: req.user,
             });
         })

@@ -1,5 +1,5 @@
 extends layout
-    
+
 block content
     form#board_write_form(action="/board/write" method="post" enctype="multipart/form-data")
         table
@@ -12,7 +12,7 @@ block content
                     input#img-url(type='hidden' name='url').
             tr
                 td
-                    textarea#board-write-text(name="Text", class="editor1", cols="30", rows="20" placeholder="내용")
+                    textarea#board-write-text(name="Text" cols="500" rows="50" placeholder="내용")
             tr
                 td
                     button(type="submit") 작성하기 !
@@ -27,22 +27,22 @@ block content
                 //- alert(this.files.length); //파일 개수
                 var Concat;
 
-                
+
 
                 for(i=0;i < this.files.length;i++){
                     formData.append('photo', this.files[i]);
                     //- concat=this.files[0].concat('',this.files[i]);
                 }
                 //- alert(concat);
-                
+
                 var xhr = new XMLHttpRequest();
                 xhr.onload = function () {
                     if (xhr.status === 200) {
-                        
+
                         let parsing_url = JSON.parse(xhr.responseText);
-                       
+
                         for (var i=0;i<parsing_url.length;i++){
-                            
+
                             let image_path = parsing_url[i];
 
                             let addImg = document.createElement('img');
@@ -53,7 +53,7 @@ block content
                             addInputBox.value = image_path;
                             addInputBox.name ='url';
                             addInputBox.type = 'hidden';
-                            
+
                             document.getElementById('img-preview').appendChild(addImg);
                             document.getElementById('img-preview').appendChild(addInputBox);
                             //이미지 url 스트링 배열을 다시 서버로 보내서 포문돌려서 저장하기 ! 
@@ -81,5 +81,7 @@ block content
                 bodyText.focus();
                 return false;
             }
-            
+
         });
+    script(type='text/javascript'). 
+        CKEDITOR.replace( 'Text' );

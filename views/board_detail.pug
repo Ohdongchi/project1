@@ -7,8 +7,15 @@ block content
                 span 제목 :
                     .board-detail-name(name='boardnameUpdate')=detail.boardName
                     input.my-id(type="hidden" value=user.id)
-                .board-detail-text(name='boardtextUpdate' )= detail.boardText
+                .board-detail-text(name='boardtextUpdate')
                 input#test22(type="hidden" value=detail.boardText)
                 button.postdetail_but(type='button')
                     a(href="/board" ) 완료
     script.
+        function test(Text){
+            return Text;
+        }
+        //- alert(detail.boardText);
+        var detail = !{JSON.stringify(detail)};
+        //- alert( test(detail.boardText));
+        document.querySelector('.board-detail-text').innerHTML = test(detail.boardText);
