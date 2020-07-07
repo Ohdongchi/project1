@@ -87,21 +87,30 @@ router.get('/write', isLoggedIn, async(req, res, next) => {
 router.post('/write', isLoggedIn, upload2.none(), async(req, res, next) => {
     try {
         var image = req.body.url;
-        // console.log(" 0 " + image[1] + " /// " + " 1 " + image[2]);
-        // console.log(image.length);
+        console.log(" 0 " + image[1] + " /// " + " 1 " + image[2]);
+        console.log(image.length);
 
         const post = await Post.create({
             boardName: req.body.Name,
             boardText: req.body.Text,
             UserId: req.user.id,
-
         });
 
-        for (i = 1; i <= image.length - 1; i++) {
-            const url = await imageUrl.create({
-                imageUrl: image[i],
-            })
+        if (image) {
+            console.log(image.length)
+            for (i = 1; i <= image.length - 1; i++) {
+                const url = await Url.create({
+                    imageUrl: image[i],
+                    BoardId: post.id,
+                });
+            }
         }
+
+        // for (i = 1; i <= image.length - 1; i++) {
+        //     const url = await imageUrl.create({
+        //         imageUrl: image[i],
+        //     })
+        // }
 
 
         res.redirect('/board');
@@ -113,7 +122,11 @@ router.post('/write', isLoggedIn, upload2.none(), async(req, res, next) => {
 
 router.get('/detail/:id', isLoggedIn, async(req, res, next) => {
 
-    Post.findAll({
+    const postFind = Post.findAll({
+            include: [{
+                model: Url,
+                attributes: ['imageUrl'],
+            }],
             where: { id: req.params.id }, // 게시글의 id값으로 post 에서 조회
         })
         .then((posts) => {
@@ -123,12 +136,13 @@ router.get('/detail/:id', isLoggedIn, async(req, res, next) => {
                 detail: posts[0],
                 id: req.params.id,
             });
-
+            console.log(posts);
         })
         .catch((error) => {
             console.error(error);
             next(error);
         })
+
 });
 
 router.post('/delete/:id', isLoggedIn, async(req, res, next) => {
@@ -164,13 +178,11 @@ router.post('/update/:id', isLoggedIn, async(req, res, next) => {
     try {
         var id = parseInt(req.params.id);
         await Post.update({
-                boardName: req.body.boardnameUpdate,
-                boardText: req.body.boardtextUpdate,
-            }, {
-                where: { id: id },
-            },
-
-        );
+            boardName: req.body.boardnameUpdate,
+            boardText: req.body.boardtextUpdate,
+        }, {
+            where: { id: id },
+        }, );
         console.log('게시글 수정 완료 ~!');
         res.redirect('/board');
     } catch (error) {

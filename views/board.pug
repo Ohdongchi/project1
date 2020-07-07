@@ -18,13 +18,13 @@ block content
                     for poster in posters
                         tr.Poster
                             td.boardNick=poster.User.nick
-                            td.boardName=poster.boardName
                             -function textOverCut(text){
                             -    if(text.length > 10 ){
                             -        text = text.substr(0, 9) + '  ... ';
                             -    }
                             -    return text;
                             -}
+                            td.boardName=textOverCut(poster.boardName)
                             td.boardContent=textOverCut(poster.boardText)
                             td
                                 if user.id == poster.User.id
@@ -78,10 +78,5 @@ block content
         var poster = !{JSON.stringify(posters)};
         var td = document.querySelectorAll('.boardName');
         for (i=0;i<poster.length;i++){
-            if (td[i].nextSibling.getAttribute('class') == 'boardContent' && td[i].innerText == poster[i].boardName ){
-                    td[i].nextSibling.innerHTML=poster[i].boardText.replace(/(<([^>]+)>)/ig,"");
-            }
+            td[i].nextSibling.innerHTML=poster[i].boardText.replace(/(<([^>]+)>)/ig,"");
         }
-
-        
-        

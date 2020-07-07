@@ -16,13 +16,7 @@ db.Url = require('./imageUrl')(sequelize, Sequelize);
 db.User.hasMany(db.Post);
 db.Post.belongsTo(db.User);
 
-db.Post.belongsToMany(db.Url, {
-    through: 'PostUrl',
-    as: 'urlId'
-});
-db.Url.belongsToMany(db.Post, {
-    through: 'PostUrl',
-    as: 'postId',
-});
+db.Post.hasMany(db.Url);
+db.Url.belongsTo(db.Post);
 
 module.exports = db;

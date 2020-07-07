@@ -1,5 +1,4 @@
 const local = require('./localStrategy');
-const facebook = require('./facebookStrategy');
 const { User } = require('../models');
 
 module.exports = (passport) => {
@@ -16,5 +15,4 @@ module.exports = (passport) => {
             .catch(err => done(err));
     });
     local(passport); // 로컬 아이디 
-    facebook(passport);
 };
