@@ -6,15 +6,12 @@ block content
             form.login-form(action="/auth/login" method='post')
                 h1.login-form-logo Login
                 .input-box
-                    label(for='reigster-email') email : 
+                    label(for='login-email') email : 
                     input(name='email' placeholder='example@naver.com' type='email')
                 .input-box
-                    label(for='reigster-password') PassWord : 
+                    label(for='login-password') PassWord : 
                     input(name='password' placeholder='PassWord' type='password')
                 if loginError
                     .error-message=loginError
                 .submit-box
                     button.signIn_but(type='submit') Login
-            //- a.facebook_btn(href="/auth/facebook" style="color:black")
-            //-     span f
-            //-     span facebook

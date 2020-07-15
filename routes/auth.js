@@ -1,5 +1,5 @@
 const express = require('express');
-const { User, Board } = require('../models');
+const { User } = require('../models');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('./login');
@@ -15,7 +15,6 @@ router.get('/register', isNotLoggedIn, async(req, res, next) => {
         res.render('register', {
             title: 'Web-Minor-Register',
             user: req.user,
-            registerError: req.flash('registerError'),
         })
     } catch {
         console.error(error);
@@ -93,13 +92,13 @@ router.post('/logout', isLoggedIn, async(req, res, next) => {
     }
 });
 
-router.get('/facebook', passport.authenticate('facebook'));
+// router.get('/facebook', passport.authenticate('facebook'));
 
-router.get('/facebook/callback', passport.authenticate('facebook', {
-    failureRedirect: '/auth/signIn',
-    successRedirect: '/'
-}), (req, res) => {
-    console.log('연결성공');
-    res.redirect('/');
-});
+// router.get('/facebook/callback', passport.authenticate('facebook', {
+//     failureRedirect: '/auth/signIn',
+//     successRedirect: '/'
+// }), (req, res) => {
+//     console.log('연결성공');
+//     res.redirect('/');
+// });
 module.exports = router;

@@ -9,13 +9,19 @@ block content
                     input.my-id(type="hidden" value=user.id)
                 .board-detail-text(name='boardtextUpdate')
                 input#test22(type="hidden" value=detail.boardText)
-                button.postdetail_but(type='button')
+                button.post_detail_but(type='button')
                     a(href="/board" ) 완료
+            .image-group
     script.
-        function test(Text){
-            return Text;
+        function Rete(Text){
+            return Text.boardText;
         }
-        //- alert(detail.boardText);
         var detail = !{JSON.stringify(detail)};
-        //- alert( test(detail.boardText));
-        document.querySelector('.board-detail-text').innerHTML = test(detail.boardText);
+        document.querySelector('.board-detail-text').innerHTML = Rete(detail);
+        for(i=0;i<=detail.imageUrls.length-1;i++){
+            var img = document.querySelector('.image-group');
+            var create = document.createElement('img');
+            create.setAttribute('class','detail_Img_class');
+            create.src =detail.imageUrls[i].imageUrl;
+            img.appendChild(create);
+        }

@@ -1,105 +1,129 @@
 /* board */
+
 .board_group {
-    width:100%;
-    text-align: center;;
+    width: 100%;
+    text-align: center;
+    ;
 }
-.board_group > table {
-    width:90%;
+
+.board_group>table {
+    width: 90%;
     display: inline-block;
     text-align: center;
     border-collapse: collapse;
-    border-top:1px solid black;
-}
-.board_group > tr{
-    display:inline-block;
-}
-.board_group > table > thead > tr > th {
-    width:20em;
+    border-top: 1px solid black;
 }
 
-.board_group > table > thead > tr > th:nth-child(3) {
-    width:30em;
+.board_group>tr {
+    display: inline-block;
 }
-.board_group > table > tbody > tr > td {
-    width:20em;
+
+.board_group>table>thead>tr>th {
+    width: 20em;
+}
+
+.board_group>table>thead>tr>th:nth-child(3) {
+    width: 30em;
+}
+
+.board_group>table>tbody>tr>td {
+    width: 20em;
     overflow: hidden;
 }
-.board_group > table > tbody > tr > td:nth-child(3) {
-    width:30em;
+
+.board_group>table>tbody>tr>td:nth-child(3) {
+    width: 30em;
 }
 
-.Poster > td > button {
-    padding:2px;
-}
-.Poster > td {
-    width:20em;
+.Poster>td>button {
+    padding: 2px;
 }
 
-.post_update{
-    color:black
-}
-.postdetail_but > a {
-    color:black;
+.Poster>td {
+    width: 20em;
 }
 
-.post_detail {color:black;}
-/* write */
-#write{
-    border:none;
-    padding:3px;
-    font-size:1em;
-    margin:15px 1em;
+.post_update {
+    color: black
 }
-#img-preview > img {
+
+
+/* detail */
+
+.post_detail_but>a {
+    color: black;
+}
+
+.detail_Img_class {
     width: 200px;
-    height:200px;
-    display: block;
-    background-color:black;
+    height: 200px;
 }
+
+
+/* write */
+
+#write {
+    border: none;
+    padding: 3px;
+    font-size: 1em;
+    margin: 15px 1em;
+}
+
+#img-preview>img {
+    width: 200px;
+    height: 200px;
+    display: block;
+    background-color: black;
+}
+
 
 /* update */
+
 .board-update {
-    margin-top:50px;
-    width:100%;
+    margin-top: 50px;
+    width: 100%;
     text-align: center;
 }
 
 .input-group {
-    width:500px;
+    width: 500px;
     text-align: left;
     display: inline-block;
-    border:5px double rgba(37, 238, 171, 0.808);
-    padding:10px 20px;
+    border: 5px double rgba(37, 238, 171, 0.808);
+    padding: 10px 20px;
 }
 
 .board-update-name {
-    width:250px;
-    display:inline-block;
-    margin:0;
-    padding:0;
-    margin-bottom:3px;
+    width: 250px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3px;
 }
+
 .board-detail-name {
-    width:250px;
-    display:inline-block;
-    margin:0;
-    padding:0;
-    margin-bottom:3px;
+    width: 250px;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 3px;
 }
+
 .board-update-text {
     display: inline-block;
-    width:500px;
-    height:500px;
-    margin-top:3px;
+    width: 500px;
+    height: 500px;
+    margin-top: 3px;
 }
 
 .board-detail-text {
     display: inline-block;
-    width:500px;
-    height:500px;
-    margin-top:3px;
+    width: 500px;
+    height: 500px;
+    margin-top: 3px;
 }
-.input-group > button {
+
+.input-group>button {
     display: block;
-    padding:5px;
+    padding: 5px;
 }

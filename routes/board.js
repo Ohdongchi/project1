@@ -21,19 +21,18 @@ router.get('/', isLoggedIn, async(req, res, next) => {
             ],
         })
         .then((posts) => {
-            console.log(posts[0]);
             res.render('board', {
                 title: 'Web Programing Minorroject',
                 posters: posts,
                 user: req.user,
             });
+            console.log(posts);
         })
         .catch((error) => {
             console.error(error);
             next(error);
         })
 });
-
 
 // uploads 폴더가 존재하지 않을 때 예외처리를 통하여 파일 생성
 fs.readdir('uploads', (error) => {
@@ -60,14 +59,13 @@ const upload = multer({ //diskStorage,limits 속성
 
 router.post('/img', isLoggedIn, upload.array('photo', 2), (req, res) => {
 
-    console.log(req.files);
-
+    // console.log(req.files);
     let imageUrl_save = new Array;
 
     for (i = 0; i < req.files.length; i++) {
         imageUrl_save.push(`/img/${req.files[i].filename}`); // 문자열
     }
-    console.log(imageUrl_save);
+    // console.log(imageUrl_save);
     res.json(imageUrl_save);
 });
 
@@ -97,7 +95,7 @@ router.post('/write', isLoggedIn, upload2.none(), async(req, res, next) => {
         });
 
         if (image) {
-            console.log(image.length)
+            // console.log(image.length)
             for (i = 1; i <= image.length - 1; i++) {
                 const url = await Url.create({
                     imageUrl: image[i],
@@ -136,7 +134,7 @@ router.get('/detail/:id', isLoggedIn, async(req, res, next) => {
                 detail: posts[0],
                 id: req.params.id,
             });
-            console.log(posts);
+            console.dir(posts)
         })
         .catch((error) => {
             console.error(error);
